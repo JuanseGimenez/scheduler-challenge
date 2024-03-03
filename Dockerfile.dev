@@ -1,0 +1,20 @@
+# syntax=docker/dockerfile:1
+FROM ruby:2.7.5-bullseye
+
+# Image metadata
+LABEL mantainer="info@razortech.com.ar"
+LABEL version="1.0"
+LABEL description="This image contains Ruby 2.7.5 and the necessary gems \
+to solve the exercise."
+
+# Copy project file
+ENV APP_HOME=/ruby-exercise
+WORKDIR $APP_HOME
+COPY . .
+
+# Configure bundler
+ENV BUNDLER_VERSION=2.0.2
+RUN gem install bundler -v $BUNDLER_VERSION
+
+# Bundle install
+RUN bundle install --jobs $(nproc) --retry 3

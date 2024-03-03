@@ -1,0 +1,38 @@
+#!/bin/bash
+
+echo
+echo "Do you want to build the exercise Docker environment? (no/yes)"
+read answer
+echo
+case ${answer} in
+  [yY] | [yY][Ee][Ss] )
+    echo "Building your exercise environment"
+    echo
+    ;;
+  *)
+    echo "Prevent from building your exercise environment"
+    echo
+    exit
+    ;;
+esac
+echo "----------------------------------"
+
+docker="$(which docker)"
+
+# Stop running containers if any
+running_containers=$(${docker} ps -q)
+if [[ $running_containers ]]
+then
+  echo "Stopping running containers"
+  ${docker} stop $running_containers
+  echo "Done"
+  echo ""
+fi
+
+# Build exercise docker image
+${docker} build -f Dockerfile.dev -t ruby-exercise:develop .
+
+echo "----------------------------------"
+echo ""
+echo "Ready to start the exercise. To run specs execute: ./script/terminal and then rspec spec/scheduler_spec.rb"
+echo ""

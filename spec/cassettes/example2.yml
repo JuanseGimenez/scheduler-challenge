@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://shows-remote-api.com
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      server:
+      - nginx/1.17.3
+      date:
+      - Wed, 11 Dec 2019 17:01:02 GMT
+      content-type:
+      - text/html; charset=utf-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - keep-alive
+      x-frame-options:
+      - SAMEORIGIN
+      x-xss-protection:
+      - 1; mode=block
+      x-content-type-options:
+      - nosniff
+      x-served-by:
+      - c731350970bd2d5289dbae4f0dfb6144
+      cache-control:
+      - max-age=0, private, must-revalidate
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"id":1,"quantity":4},{"id":2,"quantity":5},{"id":3,"quantity":7},{"id":4,"quantity":15}]'
+    http_version:
+  recorded_at: Wed, 11 Dec 2019 17:01:02 GMT
+recorded_with: VCR 5.0.0
